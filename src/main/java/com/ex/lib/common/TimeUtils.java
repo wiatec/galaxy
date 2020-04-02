@@ -1,9 +1,6 @@
 package com.ex.lib.common;
 
-
-import javafx.scene.chart.ValueAxis;
 import org.apache.commons.lang3.StringUtils;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -321,7 +318,9 @@ public class TimeUtils {
     }
 
 
-
+    /**
+     * 判断2个日期是否是同一天
+     */
     public static boolean isSameDay(Date date1, Date date2) {
         if(date1 != null && date2 != null) {
             Calendar cal1 = Calendar.getInstance();

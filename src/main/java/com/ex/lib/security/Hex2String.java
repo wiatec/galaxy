@@ -19,7 +19,6 @@ public class Hex2String {
             if (isEmptyStr(filePath)) {
                 return "";
             }
-
             return toHexString(new File(filePath));
         }
 
@@ -46,7 +45,7 @@ public class Hex2String {
             return out.toByteArray();
         }
 
-        /*
+        /**
          * Converts a byte array to hex string
          */
         private static String toHexString(byte[] bytes) {
@@ -60,7 +59,7 @@ public class Hex2String {
             return buf.toString();
         }
 
-        /*
+        /**
          * Converts a byte to hex digit and writes to the supplied buffer
          */
         private static void byte2hex(byte b, StringBuffer buf) {
@@ -70,7 +69,7 @@ public class Hex2String {
             buf.append(hexChars[low]);
         }
 
-        /*
+        /**
          * Converts a hex string to byte array
          */
         private static byte[] convert2bytes(String stringOfHex) {
@@ -91,14 +90,14 @@ public class Hex2String {
             return bytes;
         }
 
-        /*
+        /**
          * Converts a character to byte
          */
         private static byte charToByte(char c) {
             return (byte) hexString.indexOf(c);
         }
 
-        /*
+        /**
          * Converts a byte array to file
          */
         @SuppressWarnings("resource")
@@ -115,7 +114,7 @@ public class Hex2String {
             fc.close();
         }
 
-        /*
+        /**
          * Determine whether a string is empty
          */
         private static boolean isEmptyStr(String str) {
