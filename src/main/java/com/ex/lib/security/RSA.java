@@ -17,6 +17,8 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 /**
+ *
+ *
  * @author patrick
  */
 public class RSA {
@@ -205,6 +207,14 @@ public class RSA {
 
     /**
      * 读取pem文件中key字符串
+     *
+     * 使用openssl生成密钥对
+     * 生成私钥：
+     *      openssl genrsa -out rsa_private_key.pem 1024
+     * java中使用私钥需要将私钥经过PKCS#8编码
+     *      openssl pkcs8 -topk8 -inform PEM -in rsa_private_key.pem -outform PEM -out rsa_private_key_pkcs8.pem -nocrypt
+     * 生成公钥
+     *      openssl rsa -in rsa_private_key.pem -pubout -out rsa_public_key.pem
      */
     public static String getKeyStrFromPemFile(String pemFilePath) {
         try {

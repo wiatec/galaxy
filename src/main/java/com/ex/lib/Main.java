@@ -36,11 +36,16 @@ public class Main {
             boolean verifyResult = RSA.verifySignWithPublicKey("12312312", sign, key.getPublicKey());
             System.out.println(verifyResult);
 
-            String pri = RSA.getKeyStrFromPemFile("/Users/patrick/IdeaProjects/galaxy/rsa_key/private.pem");
+            String pri = RSA.getKeyStrFromPemFile("/Users/patrick/CodeLibraries/rsa/private_1024_pkcs8.pem");
             System.out.println(pri);
+            String e1 = RSA.encryptWithPrivate(pri, "123");
+            System.out.println(e1);
 
-            String pub = RSA.getKeyStrFromPemFile("/Users/patrick/IdeaProjects/galaxy/rsa_key/public.pem");
+            String pub = RSA.getKeyStrFromPemFile("/Users/patrick/CodeLibraries/rsa/public_1024.pem");
             System.out.println(pub);
+            String r1 = RSA.decryptWithPublic(pub, e1);
+            System.out.println(r1);
+
         }
 
         //sha256
