@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author patrick
  */
-public class GsonUtils {
+public class GsonMaster {
 
     private static ParameterizedType getType(final Class c, final Type... args){
         return new ParameterizedType() {
@@ -31,13 +31,19 @@ public class GsonUtils {
         };
     }
 
+    /**
+     * 将对象转为json字符串
+     */
     public static String toStr(Object object){
         if(object == null){
-            return "";
+            return null;
         }
         return new Gson().toJson(object);
     }
 
+    /**
+     * 将json 字符串转为对象
+     */
     public static <T> T toObj(String str, Class<T> tClass){
         if(StringUtils.isEmpty(str)){
             return null;
@@ -45,6 +51,9 @@ public class GsonUtils {
         return new Gson().fromJson(str, tClass);
     }
 
+    /**
+     * 将json字符串转为对象列表
+     */
     public static <T> List<T> toList(String str, Class<T> tClass){
         if(StringUtils.isEmpty(str)){
             return null;

@@ -9,9 +9,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * AES encrypt and decrypt
+ * Aes encrypt and decrypt
  */
-public class AES {
+public class Aes {
 
 
     private static final String VIPARA = "2018071119861008";

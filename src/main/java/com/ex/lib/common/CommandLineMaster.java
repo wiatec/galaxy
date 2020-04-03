@@ -10,11 +10,11 @@ import java.util.concurrent.*;
 /**
  * @author patrick
  */
-public class CommandLineUtils {
+public class CommandLineMaster {
 
     private static final ExecutorService executorService = new ThreadPoolExecutor(4, 10,
             30000, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>(),
-            new RxThreadFactory("CommandLineUtils"));
+            new RxThreadFactory("CommandLineMaster"));
 
     public static int run(String command){
         try {
@@ -22,22 +22,22 @@ public class CommandLineUtils {
             Process process = Runtime.getRuntime().exec(commands);
             InputStream inputStream = process.getInputStream();
             InputStream errorStream = process.getErrorStream();
-            System.out.println("CommandLineUtils process command ==> : " + command);
+            System.out.println("CommandLineMaster process command ==> : " + command);
             if(inputStream != null) {
                 executorService.execute(() -> {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     try {
                         String line;
                         while (((line = bufferedReader.readLine()) != null)){
-                            System.out.println("CommandLineUtils process stream ==> : " + line);
+                            System.out.println("CommandLineMaster process stream ==> : " + line);
                         }
                     }catch (Exception e){
-                        System.out.println("CommandLineUtils execute fail ==> : " + e);
+                        System.out.println("CommandLineMaster execute fail ==> : " + e);
                     }finally {
                         try {
                             inputStream.close();
                         }catch (Exception e){
-                            System.out.println("CommandLineUtils execute fail ==> : " + e);
+                            System.out.println("CommandLineMaster execute fail ==> : " + e);
                         }
                     }
                 });
@@ -48,25 +48,25 @@ public class CommandLineUtils {
                     try {
                         String line;
                         while (((line = bufferedReader.readLine()) != null)){
-                            System.out.println("CommandLineUtils error stream ==> : " + line);
+                            System.out.println("CommandLineMaster error stream ==> : " + line);
                         }
                     }catch (Exception e){
-                        System.out.println("CommandLineUtils execute fail ==> : " + e);
+                        System.out.println("CommandLineMaster execute fail ==> : " + e);
                     }finally {
                         try {
                             errorStream.close();
                         }catch (Exception e){
-                            System.out.println("CommandLineUtils execute fail ==> : " + e);
+                            System.out.println("CommandLineMaster execute fail ==> : " + e);
                         }
                     }
                 });
             }
             int code = process.waitFor();
-            System.out.println("CommandLineUtils execute result ==> : " + code);
+            System.out.println("CommandLineMaster execute result ==> : " + code);
             process.destroy();
             return code;
         } catch (Exception e) {
-            System.out.println("CommandLineUtils execute fail ==> : " + e);
+            System.out.println("CommandLineMaster execute fail ==> : " + e);
             return 500;
         }
     }

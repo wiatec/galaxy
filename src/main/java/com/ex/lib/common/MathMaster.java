@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * @author patrick
  */
-public class MathUtils {
+public class MathMaster {
 
     /**
      * 计算2个int数相除的结果小数点保留2位并四舍五入

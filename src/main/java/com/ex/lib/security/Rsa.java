@@ -21,7 +21,7 @@ import java.util.Base64;
  *
  * @author patrick
  */
-public class RSA {
+public class Rsa {
 
     private static final String SIGN_ALGORITHMS = "SHA1WithRSA";
 

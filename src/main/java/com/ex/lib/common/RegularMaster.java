@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * regular util
  * @author patrick
  */
-public class RegularUtils {
+public class RegularMaster {
 
     /**
      * validate email input format

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * @author patrick
  */
-public class BigDecimalUtils {
+public class BigDecimalMaster {
 
     public static final BigDecimal ZERO = new BigDecimal("0.00");
 

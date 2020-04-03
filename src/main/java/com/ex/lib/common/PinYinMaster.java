@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 /**
  * @author patrick
  */
-public class PinYinUtils {
+public class PinYinMaster {
 
 
     /**

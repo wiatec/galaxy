@@ -10,7 +10,7 @@ import java.util.zip.GZIPOutputStream;
  * 字符串解压缩工具
  * @author patrick
  */
-public class GzipUtils {
+public class GzipMaster {
 
     public static String compress(String source) {
         if (source == null || source.length() == 0) {

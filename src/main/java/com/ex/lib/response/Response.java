@@ -14,7 +14,7 @@ public class Response<T> implements Serializable {
 
     private int code;
     private String msg;
-    private Integer count;
+    private int count;
     private T data;
 
 
@@ -79,32 +79,36 @@ public class Response<T> implements Serializable {
         return code;
     }
 
-    public void setCode(int code) {
+    public Response<T> setCode(int code) {
         this.code = code;
+        return this;
     }
 
     public String getMsg() {
         return msg;
     }
 
-    public void setMsg(String msg) {
+    public Response<T> setMsg(String msg) {
         this.msg = msg;
+        return this;
     }
 
     public Integer getCount() {
         return count;
     }
 
-    public void setCount(Integer count) {
+    public Response<T> setCount(Integer count) {
         this.count = count;
+        return this;
     }
 
     public T getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public Response<T> setData(T data) {
         this.data = data;
+        return this;
     }
 
     @Override

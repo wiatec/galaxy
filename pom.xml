@@ -4,6 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>galaxy</name>
+    <description>common library</description>
+    <url>https://github.com/wiatec/galaxy</url>
     <groupId>com.github.wiatec</groupId>
     <artifactId>galaxy</artifactId>
     <version>1.0.0</version>
@@ -75,13 +78,24 @@
         </snapshotRepository>
     </distributionManagement>
 
+
     <profiles>
+        <profile>
+            <id>disable-javadoc-doclint</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <!-- java8版本导致javadoc打包编译失败时候，添加-->
+            <properties>
+                <javadoc.opts>-Xdoclint:none</javadoc.opts>
+            </properties>
+        </profile>
 
         <profile>
             <id>release</id>
             <build>
                 <plugins>
-                    <!--这是自动发布的插件-->
+
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -93,7 +107,6 @@
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-release-plugin</artifactId>
@@ -131,7 +144,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.0.1</version>
+                        <version>2.2.1</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -144,7 +157,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.0.0</version>
+                        <version>2.10.4</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -154,26 +167,43 @@
                                 </goals>
                                 <!-- java8版本导致javadoc打包编译失败时候，添加-->
                                 <configuration>
-                                    <failOnError>false</failOnError>
-                                    <doclint>none</doclint>
+                                    <additionalparam>${javadoc.opts}</additionalparam>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
-
-
                 </plugins>
             </build>
         </profile>
     </profiles>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
 
+    <scm>
+        <url>https://github.com/wiatec/galaxy.git</url>
+        <connection>https://github.com/wiatec/galaxy</connection>
+        <developerConnection>https://github.com/wiatec</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>patrick</name>
+            <email>patrickxu@wiatec.com</email>
+            <url>https://github.com/wiatec</url>
+        </developer>
+    </developers>
+
 </project>
 
+<!--设置版本号-->
+<!--    mvn versions:set -DnewVersion=1.0.0    -->
+
 <!--发布命令-->
-<!--    mvn clean deploy -P release   -->
+<!--    终端无法打开gpg密码输入报错时： export GPG_TTY=$(tty)-->
+<!--    mvn clean install deploy -P release -Dgpg.passphrase=gpg密码   -->

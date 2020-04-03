@@ -10,7 +10,7 @@ import java.util.Locale;
 /**
  * @author patrick
  */
-public class TimeUtils {
+public class TimeMaster {
 
 
     public static final String FORMATTER_YEAR = "yyyy";
@@ -193,9 +193,9 @@ public class TimeUtils {
                 return 0L;
             }
             dateStr = dateStr.trim();
-            if(RegularUtils.matchDate(dateStr.trim())){
+            if(RegularMaster.matchDate(dateStr.trim())){
                 return getUnix(new SimpleDateFormat(FORMATTER_DATE).parse(dateStr));
-            }else if(RegularUtils.matchDateTime(dateStr.trim())){
+            }else if(RegularMaster.matchDateTime(dateStr.trim())){
                 return getUnix(new SimpleDateFormat(FORMATTER_DATE_TIME).parse(dateStr));
             }else{
                 return 0L;
@@ -256,9 +256,9 @@ public class TimeUtils {
     public static Date getDate(String dateString){
         Date date = null;
         try {
-            if(RegularUtils.matchDate(dateString)) {
+            if(RegularMaster.matchDate(dateString)) {
                 date = new SimpleDateFormat(FORMATTER_DATE, DEFAULT_LOCALE).parse(dateString);
-            }else if(RegularUtils.matchDateTime(dateString)){
+            }else if(RegularMaster.matchDateTime(dateString)){
                 date = new SimpleDateFormat(FORMATTER_DATE_TIME, DEFAULT_LOCALE).parse(dateString);
             }
             return date;

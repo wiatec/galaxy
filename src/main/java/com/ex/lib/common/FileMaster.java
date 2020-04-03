@@ -10,7 +10,7 @@ import java.security.MessageDigest;
 /**
  * @author patrick
  */
-public class FileUtils {
+public class FileMaster {
 
     /**
      * 获取文件md5值
@@ -56,5 +56,29 @@ public class FileUtils {
             }
         }
         return targetPath.toString();
+    }
+
+    /**
+     * 根据文件路径删除文件
+     */
+    public boolean delete(String filePath){
+        if(StringUtils.isEmpty(filePath)){
+            return false;
+        }
+        File file = new File(filePath);
+        return delete(file);
+    }
+
+    /**
+     * 删除文件
+     */
+    public boolean delete(File file){
+        if(file == null){
+            return false;
+        }
+        if(!file.exists()) {
+            return false;
+        }
+        return file.delete();
     }
 }

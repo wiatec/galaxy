@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * @author patrick
  */
-public class SHA {
+public class Sha {
 
     private static final String DEFAULT_KEY = "#94n$ye7~jp06%mn#32*nf%{9k2#*";
 
