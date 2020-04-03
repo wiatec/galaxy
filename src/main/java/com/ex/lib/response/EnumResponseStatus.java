@@ -19,14 +19,14 @@ public enum EnumResponseStatus {
     ERROR_BAD_REQUEST(400, Constant.Msg.BAD_REQUEST),
 
     /**
-     * 请求未授权或登录超时，需要登录
+     * 请求未授权，需要登录
      */
     ERROR_UNAUTHORIZED(401, Constant.Msg.UNAUTHORIZED),
 
     /**
      * 请求未授权或登录超时，需要登录
      */
-    ERROR_RE_LOGIN(401, Constant.Msg.LOGIN_EXPIRES),
+    ERROR_RE_LOGIN(402, Constant.Msg.LOGIN_EXPIRES),
 
     /**
      * 禁止操作该资源，例如权限不够等
@@ -61,25 +61,25 @@ public enum EnumResponseStatus {
     /**
      * 服务器内部,SQL执行错误
      */
-    ERROR_INTERNAL_SERVER_SQL(500, Constant.Msg.INTERNAL_SERVER_ERROR_SQL),
+    ERROR_INTERNAL_SERVER_SQL(590, Constant.Msg.INTERNAL_SERVER_ERROR_SQL),
 
     /**
-     * 服务器内部,SQL insert错误
+     * 服务器内部,SQL 插入错误
      */
     ERROR_INTERNAL_SERVER_SQL_I(591, Constant.Msg.INTERNAL_SERVER_ERROR_SQL_I),
 
     /**
-     * 服务器内部,SQL insert错误
+     * 服务器内部,SQL 删除错误
      */
     ERROR_INTERNAL_SERVER_SQL_D(592, Constant.Msg.INTERNAL_SERVER_ERROR_SQL_D),
 
     /**
-     * 服务器内部,SQL insert错误
+     * 服务器内部,SQL 查询错误
      */
     ERROR_INTERNAL_SERVER_SQL_Q(593, Constant.Msg.INTERNAL_SERVER_ERROR_SQL_Q),
 
     /**
-     * 服务器内部,SQL insert错误
+     * 服务器内部,SQL 更新错误
      */
     ERROR_INTERNAL_SERVER_SQL_U(594, Constant.Msg.INTERNAL_SERVER_ERROR_SQL_U),
 
