@@ -51,10 +51,9 @@ public class Main {
         System.out.println(Auth.decrypt(auth));
 
         //jwt
-        String token = Jwt.encrypt();
-        System.out.println(token);
-        Jwt.Data data = Jwt.decrypt(token);
-        System.out.println(data);
+        String t = Jwt.encrypt();
+        System.out.println(t);
+        System.out.println(Jwt.decrypt(t));
 
         //regular
         System.out.println(RegularMaster.matchMacAddress("5a:41:f8:00:21:a3"));

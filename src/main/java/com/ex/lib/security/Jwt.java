@@ -3,7 +3,6 @@ package com.ex.lib.security;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,7 +28,7 @@ public class Jwt {
      * @return token
      */
     public static String encrypt() {
-        return encrypt(DEFAULT_ISSUER, DEFAULT_SUBJECT, 1);
+        return encrypt(DEFAULT_ISSUER, DEFAULT_SUBJECT, 7);
     }
 
     /**
