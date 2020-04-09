@@ -47,8 +47,9 @@ public class Response<T> implements Serializable {
         return new Response(EnumResponseStatus.SUCCESS);
     }
 
-    public static Response success(String msg){
-        return new Response(EnumResponseStatus.SUCCESS.getCode(), msg);
+    public static Response<String> success(String msg){
+        return new Response<String> (EnumResponseStatus.SUCCESS)
+                .setData(msg);
     }
 
     public static Response success(int code, String msg){
