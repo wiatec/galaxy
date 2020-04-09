@@ -22,6 +22,17 @@ public final class Constant {
 
     }
 
+    public static final class Key {
+
+        public static final String USERNAME = "username";
+        public static final String PASSWORD = "password";
+        public static final String EMAIL = "email";
+        public static final String ADMIN = "admin";
+        public static final String AGENT = "agent";
+        public static final String PLATFORM = "platform";
+        public static final String IDENTIFIER = "identifier";
+    }
+
     public static final class Msg {
 
         public static final String SUCCESSFULLY = "Successfully";

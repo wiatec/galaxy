@@ -14,7 +14,7 @@ public class Response<T> implements Serializable {
 
     private int code;
     private String msg;
-    private int count;
+    private Integer count;
     private T data;
 
 

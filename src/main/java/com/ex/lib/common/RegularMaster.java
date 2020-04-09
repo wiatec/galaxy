@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class RegularMaster {
 
     /**
-     * validate email input format
+     * 验证email
      */
     public static boolean matchEmail(String email){
         if(StringUtils.isEmpty(email)){
@@ -22,7 +22,7 @@ public class RegularMaster {
     }
 
     /**
-     * validate is all digit
+     * 验证是否是纯数字
      */
     public static boolean matchDigit(String digit){
         if(StringUtils.isEmpty(digit)){
@@ -32,6 +32,9 @@ public class RegularMaster {
         return match(regular, digit);
     }
 
+    /**
+     * 验证日期格式 yyyy-MM-dd
+     */
     public static boolean matchDate(String dateStr){
         if(StringUtils.isEmpty(dateStr)){
             return false;
@@ -40,6 +43,10 @@ public class RegularMaster {
         return match(regular, dateStr);
     }
 
+
+    /**
+     * 验证日期时间格式 yyyy-MM-dd HH:mm:ss
+     */
     public static boolean matchDateTime(String dateTimeStr){
         if(StringUtils.isEmpty(dateTimeStr)){
             return false;
@@ -48,6 +55,9 @@ public class RegularMaster {
         return match(regular, dateTimeStr);
     }
 
+    /**
+     * 验证mac地址 xx:xx:xx:xx:xx:xx
+     */
     public static boolean matchMacAddress(String madAddress){
         if(StringUtils.isEmpty(madAddress)){
             return false;
