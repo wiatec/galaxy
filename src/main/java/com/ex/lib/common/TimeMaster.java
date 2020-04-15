@@ -35,7 +35,7 @@ public class TimeMaster {
     /**
      * 通过指定的格式获取当前时间的日期时间字符串
      */
-    private static String getString(String formatter){
+    public static String getString(String formatter){
         return getString(new Date(System.currentTimeMillis()), formatter, DEFAULT_LOCALE);
     }
 
@@ -58,14 +58,14 @@ public class TimeMaster {
     /**
      * 通过指定的格式获取指定date的日期时间字符串
      */
-    private static String getString(Date date, String formatter){
+    public static String getString(Date date, String formatter){
         return getString(date, formatter, DEFAULT_LOCALE);
     }
 
     /**
      * 通过指定的格式和本地化信息获取指定date的日期时间字符串
      */
-    private static String getString(Date date, String formatter, Locale locale){
+    public static String getString(Date date, String formatter, Locale locale){
         return new SimpleDateFormat(formatter, locale).format(date);
     }
 

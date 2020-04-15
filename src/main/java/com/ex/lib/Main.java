@@ -1,6 +1,8 @@
 package com.ex.lib;
 
 import com.ex.lib.common.RegularMaster;
+import com.ex.lib.http.HttpMaster;
+import com.ex.lib.http.callback.StringCallback;
 import com.ex.lib.security.*;
 
 /**
@@ -58,6 +60,19 @@ public class Main {
         //regular
         System.out.println(RegularMaster.matchMacAddress("5a:41:f8:00:21:a3"));
 
+        HttpMaster.get("http://foundation.vipnow.work/store/apps")
+                .param("dealer", 3)
+                .enqueue(new StringCallback() {
+                    @Override
+                    public void onSuccess(String data) {
+                        System.out.println(data);
+                    }
+
+                    @Override
+                    public void onFailure(int code, String error) {
+                        System.out.println(code + ": " + error);
+                    }
+                });
 
     }
 }
