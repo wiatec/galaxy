@@ -40,50 +40,45 @@ public class HttpMaster {
      * get request
      */
     public static AbstractRequest get(String url){
-        GetRequest request = new GetRequest();
-        request.setUrl(url);
-        request.setCallMap(callMap);
-        return request;
+        return new GetRequest()
+                .setUrl(url)
+                .setCallMap(callMap);
     }
 
     /**
      * post request
      */
     public static AbstractRequest post(String url){
-        PostRequest request = new PostRequest();
-        request.setUrl(url);
-        request.setCallMap(callMap);
-        return request;
+        return new PostRequest()
+                .setUrl(url)
+                .setCallMap(callMap);
     }
 
     /**
      * put request
      */
     public static AbstractRequest put(String url){
-        PutRequest request = new PutRequest();
-        request.setUrl(url);
-        request.setCallMap(callMap);
-        return request;
+        return new PutRequest()
+                .setUrl(url)
+                .setCallMap(callMap);
     }
 
     /**
      * delete request
      */
     public static AbstractRequest delete(String url){
-        DeleteRequest request = new DeleteRequest(url);
-        request.setUrl(url);
-        request.setCallMap(callMap);
-        return request;
+        return new DeleteRequest(url)
+                .setUrl(url)
+                .setCallMap(callMap);
     }
 
     /**
      * upload request
      */
     public static AbstractRequest upload(String url){
-        UploadRequest request = new UploadRequest();
-        request.setUrl(url);
-        request.setCallMap(callMap);
-        return request;
+        return new UploadRequest()
+                .setUrl(url)
+                .setCallMap(callMap);
     }
 
     /**

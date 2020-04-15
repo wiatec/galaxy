@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="813e4e54-78e1-43ce-b5c9-4d2104525226" name="Default Changelist" comment="202004091706">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/entities/HttpDownloadInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/callback/AbstractCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/callback/DownloadCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/callback/StringCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/callback/UploadCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/config/Header.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/config/Parameters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/interceptors/SessionInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/AbstractRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/DeleteRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/DownloadRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/GetRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/PostRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/PutRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/UploadRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="813e4e54-78e1-43ce-b5c9-4d2104525226" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ex/lib/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ex/lib/common/TimeMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/common/TimeMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+            <state relative-caret-position="241">
+              <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/AbstractRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="159" column="61" lean-forward="true" selection-start-line="159" selection-start-column="61" selection-end-line="159" selection-end-column="61" />
+            <state relative-caret-position="639">
+              <caret line="136" column="20" lean-forward="true" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,9 +122,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ex/lib/http/callback/StringCallback.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/lib/http/callback/DownloadCallback.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/lib/http/callback/UploadCallback.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/lib/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/AbstractRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java" />
       </list>
     </option>
   </component>
@@ -200,6 +181,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="galaxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="galaxy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="http" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptors" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="galaxy" type="b2602c69:ProjectViewProjectNode" />
@@ -296,7 +287,7 @@
       <workItem from="1586315064772" duration="2079000" />
       <workItem from="1586331981119" duration="3654000" />
       <workItem from="1586506497043" duration="8000" />
-      <workItem from="1586929360290" duration="11213000" />
+      <workItem from="1586929360290" duration="11713000" />
     </task>
     <task id="LOCAL-00001" summary="202004021503">
       <created>1585811078246</created>
@@ -347,11 +338,25 @@
       <option name="project" value="LOCAL" />
       <updated>1586423205473</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="202004151650">
+      <created>1586940613217</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1586940613217</updated>
+    </task>
+    <task id="LOCAL-00009" summary="202004151655">
+      <created>1586940952226</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586940952226</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50734000" />
+    <option name="totallyTimeSpent" value="51234000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -408,7 +413,9 @@
     <MESSAGE value="202004071130" />
     <MESSAGE value="202004091006" />
     <MESSAGE value="202004091706" />
-    <option name="LAST_COMMIT_MESSAGE" value="202004091706" />
+    <MESSAGE value="202004151650" />
+    <MESSAGE value="202004151655" />
+    <option name="LAST_COMMIT_MESSAGE" value="202004151655" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -866,16 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/squareup/okhttp3/okhttp/4.5.0/okhttp-4.5.0.jar!/okhttp3/Response.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -885,8 +882,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/lib/http/request/AbstractRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="159" column="61" lean-forward="true" selection-start-line="159" selection-start-column="61" selection-end-line="159" selection-end-column="61" />
+        <state relative-caret-position="639">
+          <caret line="136" column="20" lean-forward="true" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ex/lib/http/HttpMaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
