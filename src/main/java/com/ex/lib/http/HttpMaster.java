@@ -18,13 +18,14 @@ public class HttpMaster {
     /**
      * 存放请求call的集合
      */
-    private static Map<String , Call> callMap = new ConcurrentHashMap<>(20);
+    private static Map<String , Call> callMap;
     public static OkHttpClient okHttpClient;
 
     /*
      * okhttp client init
      */
     static {
+        callMap = new ConcurrentHashMap<>(20);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.retryOnConnectionFailure(true);
         builder.connectTimeout(120, TimeUnit.SECONDS);
@@ -41,6 +42,7 @@ public class HttpMaster {
     public static AbstractRequest get(String url){
         GetRequest request = new GetRequest();
         request.setUrl(url);
+        request.setCallMap(callMap);
         return request;
     }
 
@@ -50,6 +52,7 @@ public class HttpMaster {
     public static AbstractRequest post(String url){
         PostRequest request = new PostRequest();
         request.setUrl(url);
+        request.setCallMap(callMap);
         return request;
     }
 
@@ -59,6 +62,7 @@ public class HttpMaster {
     public static AbstractRequest put(String url){
         PutRequest request = new PutRequest();
         request.setUrl(url);
+        request.setCallMap(callMap);
         return request;
     }
 
@@ -68,6 +72,7 @@ public class HttpMaster {
     public static AbstractRequest delete(String url){
         DeleteRequest request = new DeleteRequest(url);
         request.setUrl(url);
+        request.setCallMap(callMap);
         return request;
     }
 
@@ -77,6 +82,7 @@ public class HttpMaster {
     public static AbstractRequest upload(String url){
         UploadRequest request = new UploadRequest();
         request.setUrl(url);
+        request.setCallMap(callMap);
         return request;
     }
 
@@ -86,6 +92,7 @@ public class HttpMaster {
     public static DownloadRequest download(String url) {
         DownloadRequest request = new DownloadRequest();
         request.setUrl(url);
+        request.setCallMap(callMap);
         return request;
     }
 
@@ -107,16 +114,5 @@ public class HttpMaster {
         if(call != null){
             call.cancel();
         }
-    }
-
-    public static void addCall(String requestTag, Call call){
-        if(StringUtils.isEmpty(requestTag)) {
-            return;
-        }
-        callMap.put(requestTag, call);
-    }
-
-    public static void removeCall(String requestTag){
-        callMap.remove(requestTag);
     }
 }

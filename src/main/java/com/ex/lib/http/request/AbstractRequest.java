@@ -4,6 +4,7 @@ package com.ex.lib.http.request;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Map;
 
 import com.ex.lib.http.HttpMaster;
 import com.ex.lib.http.callback.AbstractCallback;
@@ -37,6 +38,11 @@ public abstract class AbstractRequest {
      * 每个请求设置的标识，用于取消等操作
      */
     protected String requestTag;
+
+    /**
+     * 存储请求call的集合
+     */
+    private Map<String , Call> callMap;
 
     /**
      * 是否将请求参数转换为json格式
@@ -131,6 +137,10 @@ public abstract class AbstractRequest {
         return this;
     }
 
+    public AbstractRequest setCallMap(Map<String, Call> callMap) {
+        this.callMap = callMap;
+        return this;
+    }
 
     /**
      * 创建实际的http请求，具体有子类实现
@@ -146,7 +156,7 @@ public abstract class AbstractRequest {
         Request request = createRequest();
         Call call = HttpMaster.okHttpClient.newCall(request);
         if (requestTag != null) {
-            HttpMaster.addCall(requestTag, call);
+            addCall(requestTag, call);
         }
         Response response = call.execute();
         return response.body() != null? response.body().string(): null;
@@ -159,7 +169,7 @@ public abstract class AbstractRequest {
         Request request = createRequest();
         Call call = HttpMaster.okHttpClient.newCall(request);
         if (requestTag != null) {
-            HttpMaster.addCall(requestTag, call);
+            addCall(requestTag, call);
         }
         return call.execute();
     }
@@ -172,7 +182,7 @@ public abstract class AbstractRequest {
         Request request = createRequest();
         Call call = HttpMaster.okHttpClient.newCall(request);
         if (requestTag != null) {
-            HttpMaster.addCall(requestTag, call);
+            addCall(requestTag, call);
         }
         if(abstractCallback != null) {
             call.enqueue(abstractCallback);
@@ -186,7 +196,7 @@ public abstract class AbstractRequest {
         Request request = createRequest();
         Call call = HttpMaster.okHttpClient.newCall(request);
         if(requestTag !=null) {
-            HttpMaster.addCall(requestTag, call);
+            addCall(requestTag, call);
         }
         if(abstractCallback != null) {
             call.enqueue(abstractCallback);
@@ -200,11 +210,24 @@ public abstract class AbstractRequest {
         Request request = createRequest();
         Call call = HttpMaster.okHttpClient.newCall(request);
         if(requestTag !=null) {
-            HttpMaster.addCall(requestTag, call);
+            addCall(requestTag, call);
         }
         if(abstractCallback != null) {
             call.enqueue(abstractCallback);
         }
+    }
+
+
+
+    public void addCall(String requestTag, Call call){
+        if(StringUtils.isEmpty(requestTag)) {
+            return;
+        }
+        callMap.put(requestTag, call);
+    }
+
+    public void removeCall(String requestTag){
+        callMap.remove(requestTag);
     }
 
 }
