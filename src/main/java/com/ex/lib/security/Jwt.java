@@ -31,6 +31,15 @@ public class Jwt {
         return encrypt(DEFAULT_ISSUER, DEFAULT_SUBJECT, 7);
     }
 
+
+    /**
+     * create jwt token
+     * @return token
+     */
+    public static String encrypt(int expiresDays) {
+        return encrypt(DEFAULT_ISSUER, DEFAULT_SUBJECT, expiresDays);
+    }
+
     /**
      * encrypt jwt token
      */
