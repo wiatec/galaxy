@@ -1,7 +1,7 @@
 package com.ex.lib.http.request;
 
 
-import com.ex.lib.entities.HttpDownloadInfo;
+import com.ex.lib.http.HttpDownloadInfo;
 
 import java.util.Map;
 import okhttp3.Headers;

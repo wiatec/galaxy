@@ -1,4 +1,4 @@
-package com.ex.lib.entities;
+package com.ex.lib.http;
 
 /**
  * @author patrick

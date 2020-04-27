@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Map;
 
-import com.ex.lib.entities.HttpDownloadInfo;
+import com.ex.lib.http.HttpDownloadInfo;
 import com.ex.lib.http.HttpMaster;
 import com.ex.lib.http.callback.AbstractCallback;
 import com.ex.lib.http.callback.DownloadCallback;

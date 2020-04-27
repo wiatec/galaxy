@@ -53,6 +53,7 @@ public class Rsa {
 
     /**
      * 私钥加密
+     * 与公钥解密配合使用
      */
     public static String encryptWithPrivate(String privateKey, String content) {
         try {
@@ -73,6 +74,7 @@ public class Rsa {
 
     /**
      * 私钥解密
+     * 与公钥加密配合使用
      */
     public static String decryptWithPrivate(String privateKey, String content) {
         try {
@@ -93,6 +95,7 @@ public class Rsa {
 
     /**
      * 公钥加密
+     * 与私钥解密配合使用
      */
     public static String encryptWithPublic(String publicKey, String content) {
         try {
@@ -112,6 +115,7 @@ public class Rsa {
 
     /**
      * 公钥解密
+     * 与私钥加密配合使用
      */
     public static String decryptWithPublic(String publicKey, String encodeString) {
         try {
@@ -207,7 +211,6 @@ public class Rsa {
 
     /**
      * 读取pem文件中key字符串
-     *
      * 使用openssl生成密钥对
      * 生成私钥：
      *      openssl genrsa -out rsa_private_key.pem 1024

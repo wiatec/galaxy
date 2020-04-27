@@ -9,7 +9,7 @@
     <url>https://github.com/wiatec/galaxy</url>
     <groupId>com.github.wiatec</groupId>
     <artifactId>galaxy</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <build>
         <plugins>
             <plugin>
@@ -209,5 +209,5 @@
 </project>
 
 <!--发布命令-->
-<!--    终端无法打开gpg密码输入报错时： export GPG_TTY=$(tty)   -->
+<!--    终端无法打开gpg密码输入报错时: export GPG_TTY=$(tty)   -->
 <!--    mvn clean install deploy -P release   -->

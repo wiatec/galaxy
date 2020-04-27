@@ -1,7 +1,7 @@
 package com.ex.lib;
 
 import com.ex.lib.common.RegularMaster;
-import com.ex.lib.entities.HttpDownloadInfo;
+import com.ex.lib.http.HttpDownloadInfo;
 import com.ex.lib.http.HttpMaster;
 import com.ex.lib.http.callback.DownloadCallback;
 import com.ex.lib.http.callback.StringCallback;

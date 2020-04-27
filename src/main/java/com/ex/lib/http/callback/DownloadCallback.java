@@ -1,7 +1,7 @@
 package com.ex.lib.http.callback;
 
 
-import com.ex.lib.entities.HttpDownloadInfo;
+import com.ex.lib.http.HttpDownloadInfo;
 import okhttp3.Call;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
