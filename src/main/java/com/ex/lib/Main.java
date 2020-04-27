@@ -1,7 +1,9 @@
 package com.ex.lib;
 
 import com.ex.lib.common.RegularMaster;
+import com.ex.lib.entities.HttpDownloadInfo;
 import com.ex.lib.http.HttpMaster;
+import com.ex.lib.http.callback.DownloadCallback;
 import com.ex.lib.http.callback.StringCallback;
 import com.ex.lib.security.*;
 
@@ -71,6 +73,46 @@ public class Main {
                     @Override
                     public void onFailure(int code, String error) {
                         System.out.println(code + ": " + error);
+                    }
+                });
+
+        HttpMaster.download("")
+                .fileName("")
+                .path("")
+                .download(new DownloadCallback() {
+                    @Override
+                    public void onPending(HttpDownloadInfo downloadInfo) {
+
+                    }
+
+                    @Override
+                    public void onStart(HttpDownloadInfo downloadInfo) {
+
+                    }
+
+                    @Override
+                    public void onPause(HttpDownloadInfo downloadInfo) {
+
+                    }
+
+                    @Override
+                    public void onProgress(HttpDownloadInfo downloadInfo) {
+
+                    }
+
+                    @Override
+                    public void onComplete(HttpDownloadInfo downloadInfo) {
+
+                    }
+
+                    @Override
+                    public void onCancel(HttpDownloadInfo downloadInfo) {
+
+                    }
+
+                    @Override
+                    public void onFailure(int code, String error) {
+
                     }
                 });
 

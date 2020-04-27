@@ -15,9 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 public class DownloadRequest extends AbstractRequest {
 
     private String mFileName;
-    private String mUrl;
     private String mPath;
-    private HttpDownloadInfo mDownloadInfo;
 
     public DownloadRequest() {
     }
@@ -27,23 +25,18 @@ public class DownloadRequest extends AbstractRequest {
         return this;
     }
 
-    public DownloadRequest url (String url){
-        this.mUrl = url;
-        return this;
-    }
-
     public DownloadRequest path (String path){
         this.mPath = path;
         return this;
     }
 
-    public HttpDownloadInfo createDownloadInfo (){
+    private HttpDownloadInfo createDownloadInfo (){
         HttpDownloadInfo downloadInfo = new HttpDownloadInfo();
         if(StringUtils.isEmpty(mFileName)){
-            mFileName = mUrl.split("/")[mUrl.split("/").length -1];
+            mFileName = url.split("/")[url.split("/").length -1];
         }
         downloadInfo.setFileName(mFileName);
-        downloadInfo.setUrl(mUrl);
+        downloadInfo.setUrl(url);
         downloadInfo.setPath(mPath);
         return downloadInfo;
     }
@@ -57,7 +50,7 @@ public class DownloadRequest extends AbstractRequest {
             builder.headers(headers);
         }
         if(parameters != null){
-            StringBuilder stringBuilder = new StringBuilder(mUrl);
+            StringBuilder stringBuilder = new StringBuilder(url);
             stringBuilder.append("?");
             for(Map.Entry<String,String> entry : parameters.getStringMap().entrySet()){
                 stringBuilder.append(entry.getKey())
@@ -65,12 +58,12 @@ public class DownloadRequest extends AbstractRequest {
                         .append(entry.getValue())
                         .append("&");
             }
-            mUrl = stringBuilder.toString().substring(0,stringBuilder.toString().length()-1);
+            url = stringBuilder.toString().substring(0,stringBuilder.toString().length()-1);
         }
         if(requestTag != null){
             builder.tag(requestTag);
         }
-        builder.get().url(mUrl);
+        builder.get().url(url);
         return builder.build();
     }
 }

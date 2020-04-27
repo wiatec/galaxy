@@ -51,6 +51,7 @@ public abstract class DownloadCallback extends AbstractCallback {
                 return;
             }
             httpDownloadInfo.setLength(responseBody.contentLength());
+            onPending(httpDownloadInfo);
             File dir = new File(httpDownloadInfo.getPath());
             if (!dir.exists()) {
                 dir.mkdir();
@@ -60,7 +61,7 @@ public abstract class DownloadCallback extends AbstractCallback {
                 httpDownloadInfo.setStatus(1);
                 httpDownloadInfo.setProgress(100);
                 httpDownloadInfo.setMessage("file is exists , no need download");
-
+                onFailure(5103, httpDownloadInfo.getMessage());
                 return;
             }
             randomAccessFile = new RandomAccessFile(file, "rwd");
@@ -68,7 +69,7 @@ public abstract class DownloadCallback extends AbstractCallback {
             inputStream = responseBody.byteStream();
             httpDownloadInfo.setStatus(1);
             httpDownloadInfo.setMessage("download is start");
-
+            onStart(httpDownloadInfo);
             int length = -1;
             byte[] buffer = new byte[1024 * 1024];
             long finished = 0;
@@ -81,7 +82,7 @@ public abstract class DownloadCallback extends AbstractCallback {
                     httpDownloadInfo.setProgress((int) (finished * 100L / httpDownloadInfo.getLength()));
                     httpDownloadInfo.setStatus(1);
                     httpDownloadInfo.setMessage("downloading");
-
+                    onProgress(httpDownloadInfo);
                     currentTime = System.currentTimeMillis();
                 }
             }
@@ -89,17 +90,17 @@ public abstract class DownloadCallback extends AbstractCallback {
                 httpDownloadInfo.setProgress(100);
                 httpDownloadInfo.setStatus(1);
                 httpDownloadInfo.setMessage("download was finished");
-
+                onComplete(httpDownloadInfo);
             } else {
                 httpDownloadInfo.setStatus(1);
                 httpDownloadInfo.setMessage("file check error after download");
-
+                onFailure(5103, httpDownloadInfo.getMessage());
             }
         }catch (Exception e){
             e.printStackTrace();
             httpDownloadInfo.setStatus(1);
             httpDownloadInfo.setMessage(e.getMessage());
-
+            onFailure(5104, httpDownloadInfo.getMessage());
         }finally {
             try {
                 if(randomAccessFile !=null) {

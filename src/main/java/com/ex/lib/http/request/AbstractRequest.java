@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Map;
 
+import com.ex.lib.entities.HttpDownloadInfo;
 import com.ex.lib.http.HttpMaster;
 import com.ex.lib.http.callback.AbstractCallback;
+import com.ex.lib.http.callback.DownloadCallback;
 import com.ex.lib.http.config.Header;
 import com.ex.lib.http.config.Parameters;
 import okhttp3.Call;
@@ -48,6 +50,11 @@ public abstract class AbstractRequest {
      * 是否将请求参数转换为json格式
      */
     protected boolean jsonRequest = false;
+
+    /**
+     * 下载时设置的下载信息
+     */
+    protected HttpDownloadInfo mDownloadInfo;
 
     public AbstractRequest() {
         parameters = new Parameters();
@@ -192,14 +199,15 @@ public abstract class AbstractRequest {
     /**
      * 异步执行文件下载请求
      */
-    public void download (AbstractCallback abstractCallback){
+    public void download (DownloadCallback downloadCallback){
         Request request = createRequest();
         Call call = HttpMaster.okHttpClient.newCall(request);
         if(requestTag !=null) {
             addCall(requestTag, call);
         }
-        if(abstractCallback != null) {
-            call.enqueue(abstractCallback);
+        if(downloadCallback != null) {
+            downloadCallback.setHttpDownloadInfo(mDownloadInfo);
+            call.enqueue(downloadCallback);
         }
     }
 
