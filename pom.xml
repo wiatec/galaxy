@@ -9,7 +9,7 @@
     <url>https://github.com/wiatec/galaxy</url>
     <groupId>com.github.wiatec</groupId>
     <artifactId>galaxy</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <build>
         <plugins>
             <plugin>
@@ -34,6 +34,12 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
         </dependency>
 
         <dependency>
