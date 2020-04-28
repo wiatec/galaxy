@@ -9,6 +9,7 @@ import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author patrick
@@ -31,9 +32,11 @@ public class DeleteRequest extends AbstractRequest {
         if(parameters != null){
             RequestBody requestBody;
             if(jsonRequest){
-                String params = new Gson().toJson(parameters.getStringMap());
+                if(StringUtils.isEmpty(jsonParams)){
+                    jsonParams = new Gson().toJson(parameters.getStringMap());
+                }
                 MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
-                requestBody = RequestBody.create(mediaType, params);
+                requestBody = RequestBody.create(mediaType, jsonParams);
             }else {
                 MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
                 StringBuilder stringBuilder = new StringBuilder();

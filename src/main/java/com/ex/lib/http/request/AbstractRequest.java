@@ -32,6 +32,11 @@ public abstract class AbstractRequest {
     protected Parameters parameters;
 
     /**
+     * json 字符串格式的请求参数
+     */
+    protected String jsonParams;
+
+    /**
      * 请求url
      */
     protected String url;
@@ -135,6 +140,13 @@ public abstract class AbstractRequest {
     public AbstractRequest params(Parameters parameters){
         if(parameters != null) {
             this.parameters = parameters;
+        }
+        return this;
+    }
+
+    public AbstractRequest jsonParams(String jsonParams){
+        if(!StringUtils.isEmpty(jsonParams)){
+            this.jsonParams = jsonParams;
         }
         return this;
     }
