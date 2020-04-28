@@ -40,4 +40,13 @@ public class MathMaster {
             return result * 100;
         }
     }
+
+    /**
+     * 将double数值四舍五入保留2位小数
+     */
+    public static double halfUp(double value){
+        BigDecimal bigDecimal = new BigDecimal(value);
+        bigDecimal = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
+        return bigDecimal.doubleValue();
+    }
 }

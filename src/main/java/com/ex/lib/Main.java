@@ -1,6 +1,7 @@
 package com.ex.lib;
 
 import com.ex.lib.common.RegularMaster;
+import com.ex.lib.common.UnitMaster;
 import com.ex.lib.http.HttpDownloadInfo;
 import com.ex.lib.http.HttpMaster;
 import com.ex.lib.http.callback.DownloadCallback;
@@ -62,59 +63,7 @@ public class Main {
         //regular
         System.out.println(RegularMaster.matchMacAddress("5a:41:f8:00:21:a3"));
 
-        HttpMaster.get("http://foundation.vipnow.work/store/apps")
-                .param("dealer", 3)
-                .enqueue(new StringCallback() {
-                    @Override
-                    public void onSuccess(String data) {
-                        System.out.println(data);
-                    }
-
-                    @Override
-                    public void onFailure(int code, String error) {
-                        System.out.println(code + ": " + error);
-                    }
-                });
-
-        HttpMaster.download("")
-                .fileName("")
-                .path("")
-                .download(new DownloadCallback() {
-                    @Override
-                    public void onPending(HttpDownloadInfo downloadInfo) {
-
-                    }
-
-                    @Override
-                    public void onStart(HttpDownloadInfo downloadInfo) {
-
-                    }
-
-                    @Override
-                    public void onPause(HttpDownloadInfo downloadInfo) {
-
-                    }
-
-                    @Override
-                    public void onProgress(HttpDownloadInfo downloadInfo) {
-
-                    }
-
-                    @Override
-                    public void onComplete(HttpDownloadInfo downloadInfo) {
-
-                    }
-
-                    @Override
-                    public void onCancel(HttpDownloadInfo downloadInfo) {
-
-                    }
-
-                    @Override
-                    public void onFailure(int code, String error) {
-
-                    }
-                });
+        System.out.println(UnitMaster.formatStorage(1234324234));
 
     }
 }
