@@ -1,10 +1,13 @@
 package com.ex.lib.common;
 
 import org.apache.commons.lang3.StringUtils;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.Locale;
 
 /**
@@ -13,9 +16,9 @@ import java.util.Locale;
 public class TimeMaster {
 
 
-    public static final String FORMATTER_YEAR = "yyyy";
-    public static final String FORMATTER_DATE = "yyyy-MM-dd";
-    public static final String FORMATTER_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
+    public static final String PATTERN_YEAR = "yyyy";
+    public static final String PATTERN_DATE = "yyyy-MM-dd";
+    public static final String PATTERN_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
 
     public static final Locale DEFAULT_LOCALE = Locale.US;
 
@@ -26,140 +29,123 @@ public class TimeMaster {
 
     /**
      * 获取当前系统时间对应的的日期时间字符串
-     * 默认格式为yyyy-MM-dd HH:mm:ss， 本地化信息为Locale.US
+     * 默认格式为yyyy-MM-dd HH:mm:ss
      */
     public static String getString(){
-        return getString(new Date(System.currentTimeMillis()));
+        return getString(LocalDateTime.now(), DateTimeFormatter.ofPattern(PATTERN_DATE_TIME));
+    }
+    /**
+     * 获取指定10位Unix时间戳对应的的日期时间字符串
+     * 默认格式为yyyy-MM-dd HH:mm:ss
+     */
+    public static String getString(int unixSeconds){
+        return getString(LocalDateTime.ofEpochSecond(unixSeconds, 0, ZoneOffset.UTC),
+                DateTimeFormatter.ofPattern(PATTERN_DATE_TIME));
     }
 
     /**
      * 通过指定的格式获取当前时间的日期时间字符串
      */
-    public static String getString(String formatter){
-        return getString(new Date(System.currentTimeMillis()), formatter, DEFAULT_LOCALE);
+    public static String getString(DateTimeFormatter dateTimeFormatter){
+        return getString(LocalDateTime.now(), dateTimeFormatter);
+    }
+
+
+    /**
+     * 获取指定dateTime的日期时间字符串
+     * 默认格式为yyyy-MM-dd HH:mm:ss
+     */
+    public static String getString(LocalDateTime dateTime){
+        return getString(dateTime, DateTimeFormatter.ofPattern(PATTERN_DATE_TIME));
     }
 
     /**
-     * 获取指定Unix时间戳对应的的日期时间字符串
-     * 默认格式为yyyy-MM-dd HH:mm:ss， 本地化信息为Locale.US
+     * 通过指定的格式和本地化信息获取指定dateTime的日期时间字符串
      */
-    public static String getString(long milliseconds){
-        return getString(new Date(milliseconds));
+    public static String getString(LocalDateTime dateTime, DateTimeFormatter dateTimeFormatter){
+        return dateTime.format(dateTimeFormatter);
     }
 
     /**
-     * 获取指定date的日期时间字符串
-     * 默认格式为yyyy-MM-dd HH:mm:ss， 本地化信息为Locale.US
+     * 判断某个10位unix时间戳对应的日期是否在当前日期之前
      */
-    public static String getString(Date date){
-        return getString(date, FORMATTER_DATE_TIME, DEFAULT_LOCALE);
-    }
-
-    /**
-     * 通过指定的格式获取指定date的日期时间字符串
-     */
-    public static String getString(Date date, String formatter){
-        return getString(date, formatter, DEFAULT_LOCALE);
-    }
-
-    /**
-     * 通过指定的格式和本地化信息获取指定date的日期时间字符串
-     */
-    public static String getString(Date date, String formatter, Locale locale){
-        return new SimpleDateFormat(formatter, locale).format(date);
-    }
-
-    /**
-     * 判断某个unix时间戳对应的日期是否在当前日期之前
-     */
-    public static boolean before(long milliseconds){
-        return before(new Date(milliseconds));
+    public static boolean isBefore(long seconds){
+        return isBefore(LocalDateTime.ofEpochSecond(seconds, 0, ZoneOffset.UTC));
     }
 
     /**
      * 判断某个日期是否在当前日期之前
      */
-    public static boolean before(Date date){
-        return date.before(new Date());
+    public static boolean isBefore(LocalDateTime dateTime){
+        return dateTime.isBefore(LocalDateTime.now());
     }
 
     /**
      * 获取当前日期之后指定年数的日期
      */
-    public static Date getDateAfterSomeYears(int year){
-        return getDateAfterSomeYears(new Date(), year);
+    public static LocalDateTime getDateAfterSomeYears(int years){
+        return getDateAfterSomeYears(LocalDateTime.now(), years);
     }
 
     /**
      * 获取指定日期之后指定年数的日期
      */
-    public static Date getDateAfterSomeYears(Date date, int year){
-        return getDateAfter(date, FIELD_YEAR, year);
+    public static LocalDateTime getDateAfterSomeYears(LocalDateTime dateTime, int years){
+        return getDateAfter(dateTime, years, ChronoUnit.YEARS);
     }
 
     /**
      * 获取当前日期之后指定月数的日期
      */
-    public static Date getDateAfterSomeMonths(int month){
-        return getDateAfterSomeMonths(new Date(), month);
+    public static LocalDateTime getDateAfterSomeMonths(int months){
+        return getDateAfterSomeMonths(LocalDateTime.now(), months);
     }
 
     /**
      * 获取指定日期之后指定月数的日期
      */
-    public static Date getDateAfterSomeMonths(Date date, int month){
-        return getDateAfter(date, FIELD_MONTH, month);
+    public static LocalDateTime getDateAfterSomeMonths(LocalDateTime dateTime, int months){
+        return getDateAfter(dateTime, months, ChronoUnit.MONTHS);
     }
 
     /**
      * 获取当前日期之后指定周数的日期
      */
-    public static Date getDateAfterSomeWeeks(int week){
-        return getDateAfterSomeWeeks(new Date(), week);
+    public static LocalDateTime getDateAfterSomeWeeks(int weeks){
+        return getDateAfterSomeWeeks(LocalDateTime.now(), weeks);
     }
 
     /**
      * 获取指定日期之后指定周数的日期
      */
-    public static Date getDateAfterSomeWeeks(Date date, int week){
-        return getDateAfter(date, FIELD_WEEK, week);
+    public static LocalDateTime getDateAfterSomeWeeks(LocalDateTime dateTime, int weeks){
+        return getDateAfter(dateTime, weeks, ChronoUnit.WEEKS);
     }
 
     /**
      * 获取当前日期之后指定天数的日期
      */
-    public static Date getDateAfterSomeDays(int day){
-        return getDateAfterSomeDays(new Date(), day);
+    public static LocalDateTime getDateAfterSomeDays(int days){
+        return getDateAfterSomeDays(LocalDateTime.now(), days);
     }
 
 
     /**
      * 获取指定日期之后指定天数的日期
      */
-    public static Date getDateAfterSomeDays(Date date, int day){
-        return getDateAfter(date, FIELD_DAY, day);
+    public static LocalDateTime getDateAfterSomeDays(LocalDateTime dateTime, int days){
+        return getDateAfter(dateTime, days, ChronoUnit.DAYS);
     }
 
     /**
-     * 获取某个日期之后指定field和value的新日期
-     * @param date   指定的日期
-     * @param field  之后日期的计算单位，YEAR, MONTH, WEEK, DAY
-     * @param value  之后日期的计算值
+     * 获取某个日期之后指定value和unit的新日期
+     * @param dateTime   指定的日期
+     * @param value     之后日期的计算值
+     * @param unit      之后日期的计算单位
      * @return
      */
-    private static Date getDateAfter(Date date, int field, int value){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        if(field == FIELD_YEAR){
-            calendar.add(Calendar.YEAR, value);
-        }else if(field == FIELD_MONTH) {
-            calendar.add(Calendar.MONTH, value);
-        }else if(field == FIELD_WEEK) {
-            calendar.add(Calendar.WEEK_OF_YEAR, value);
-        }else if(field == FIELD_DAY) {
-            calendar.add(Calendar.DAY_OF_YEAR, value);
-        }
-        return calendar.getTime();
+    private static LocalDateTime getDateAfter(LocalDateTime dateTime, int value, TemporalUnit unit){
+        return dateTime.plus(value, unit);
     }
 
     /**
@@ -172,34 +158,31 @@ public class TimeMaster {
     /**
      * 获取时间字符串对应的unix秒级时间戳
      */
-    public static int getUnixSeconds(String dateStr){
-        return (int) (getUnix(dateStr) / 1000);
+    public static int getUnixSeconds(String dateString){
+        return (int) (getUnixMilliSeconds(dateString) / 1000);
     }
 
     /**
      * 获取指定date对应的unix秒级时间戳
      */
-    public static int getUnixSeconds(Date date){
-        return (int) (getUnix(date) / 1000);
+    public static int getUnixSeconds(LocalDateTime dateTime){
+        if(dateTime == null) {
+            return 0;
+        }
+        return (int) (getUnixMilliSeconds(dateTime) / 1000);
     }
 
     /**
      * 获取指定时间字符串对应的unix毫秒级时间戳
-     * @param dateStr 字符串时间 yyyy-MM-dd or yyyy-MM-dd HH:mm:ss
+     * @param dateString 字符串时间 yyyy-MM-dd or yyyy-MM-dd HH:mm:ss
      */
-    public static long getUnix(String dateStr){
+    public static long getUnixMilliSeconds(String dateString){
         try {
-            if(StringUtils.isEmpty(dateStr)) {
+            if(StringUtils.isEmpty(dateString)) {
                 return 0L;
             }
-            dateStr = dateStr.trim();
-            if(RegularMaster.matchDate(dateStr.trim())){
-                return getUnix(new SimpleDateFormat(FORMATTER_DATE).parse(dateStr));
-            }else if(RegularMaster.matchDateTime(dateStr.trim())){
-                return getUnix(new SimpleDateFormat(FORMATTER_DATE_TIME).parse(dateStr));
-            }else{
-                return 0L;
-            }
+            dateString = dateString.trim();
+            return getUnixMilliSeconds(getDateTime(dateString));
         } catch (Exception e) {
             return 0;
         }
@@ -208,62 +191,62 @@ public class TimeMaster {
     /**
      * 获取指定date对应的unix毫秒级时间戳
      */
-    public static long getUnix(Date date){
-        return date.getTime();
+    public static long getUnixMilliSeconds(LocalDateTime dateTime){
+        if(dateTime == null) {
+            return 0L;
+        }
+        return dateTime.toInstant(ZoneOffset.UTC).toEpochMilli();
     }
 
     /**
      * 获取今天0点的unix秒级时间戳
      */
-    public static int getUnixSecondBeginOf(){
-        return getUnixSecondBeginOf(new Date());
+    public static int getUnixSecondsStartOfDay(){
+        return getUnixSecondsStartOfDay(LocalDateTime.now());
     }
 
     /**
      * 获取指定日期当天0点的unix秒级时间戳
      */
-    public static int getUnixSecondBeginOf(Date date){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        return (int) (calendar.getTime().getTime() / 1000);
+    public static int getUnixSecondsStartOfDay(LocalDateTime dateTime){
+        if(dateTime == null) {
+            return 0;
+        }
+        return getUnixSeconds(dateTime.toLocalDate().atStartOfDay());
     }
 
     /**
      * 获取今天24点的unix秒级时间戳
      */
-    public static int getUnixSecondEndOf(){
-        return getUnixSecondEndOf(new Date());
+    public static int getUnixSecondsEndOfDay(){
+        return getUnixSecondsEndOfDay(LocalDateTime.now());
     }
 
     /**
      * 获取指定日期当天24点的unix秒级时间戳
      */
-    public static int getUnixSecondEndOf(Date date){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.HOUR_OF_DAY, 23);
-        calendar.set(Calendar.MINUTE, 59);
-        calendar.set(Calendar.SECOND, 59);
-        return (int) (calendar.getTime().getTime() / 1000) + 1;
+    public static int getUnixSecondsEndOfDay(LocalDateTime dateTime){
+        if(dateTime == null) {
+            return 0;
+        }
+        return getUnixSeconds(dateTime.toLocalDate().atTime(23, 59, 59)) + 1;
     }
 
     /**
-     * 字符串格式日期时间转成date格式
+     * 字符串格式日期时间转成LocalDateTime格式
+     * @param dateString 字符串时间 yyyy-MM-dd or yyyy-MM-dd HH:mm:ss
      */
-    public static Date getDate(String dateString){
-        Date date = null;
+    public static LocalDateTime getDateTime(String dateString){
+        LocalDateTime dateTime = null;
         try {
             if(RegularMaster.matchDate(dateString)) {
-                date = new SimpleDateFormat(FORMATTER_DATE, DEFAULT_LOCALE).parse(dateString);
+                dateTime = LocalDate.parse(dateString, DateTimeFormatter.ofPattern(PATTERN_DATE)).atStartOfDay();
             }else if(RegularMaster.matchDateTime(dateString)){
-                date = new SimpleDateFormat(FORMATTER_DATE_TIME, DEFAULT_LOCALE).parse(dateString);
+                dateTime = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern(PATTERN_DATE_TIME));
             }
-            return date;
-        } catch (ParseException e) {
-            return date;
+            return dateTime;
+        } catch (Exception e) {
+            return dateTime;
         }
     }
 
@@ -271,16 +254,16 @@ public class TimeMaster {
     /**
      * 计算2个日期之间相差的天数
      */
-    public static int getDifferentDays(Date d1, Date d2){
-        long diff = d1.getTime() - d2.getTime();
+    public static int getDifferentDays(LocalDateTime d1, LocalDateTime d2){
+        long diff = getUnixMilliSeconds(d1) - getUnixMilliSeconds(d2);
         return (int) (diff / (24 * 3600 * 1000));
     }
 
     /**
      * 计算2个日期之间相差的秒数
      */
-    public static int getDifferentSeconds(Date d1, Date d2){
-        long diff = d1.getTime() - d2.getTime();
+    public static int getDifferentSeconds(LocalDateTime d1, LocalDateTime d2){
+        long diff = getUnixMilliSeconds(d1) - getUnixMilliSeconds(d2);
         return (int) (diff / 1000);
     }
 
@@ -321,23 +304,9 @@ public class TimeMaster {
     /**
      * 判断2个日期是否是同一天
      */
-    public static boolean isSameDay(Date date1, Date date2) {
-        if(date1 != null && date2 != null) {
-            Calendar cal1 = Calendar.getInstance();
-            cal1.setTime(date1);
-            Calendar cal2 = Calendar.getInstance();
-            cal2.setTime(date2);
-            return isSameDay(cal1, cal2);
-        } else {
-            return false;
-        }
-    }
-
-    private static boolean isSameDay(Calendar cal1, Calendar cal2) {
-        if(cal1 != null && cal2 != null) {
-            return cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
-                    cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                    cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+    public static boolean isSameDay(LocalDateTime d1, LocalDateTime d2) {
+        if(d1 != null && d2 != null) {
+            return d1.toLocalDate().isEqual(d2.toLocalDate());
         } else {
             return false;
         }
