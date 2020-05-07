@@ -14,10 +14,11 @@ public class FileMaster {
 
     /**
      * 获取文件md5值
+     * @param filePath    文件完整路径
      */
-    public static String md5(String path){
+    public static String md5(String filePath){
         try {
-            File file = new File(path);
+            File file = new File(filePath);
             if (!file.isFile()) {
                 return "1";
             }
@@ -40,8 +41,10 @@ public class FileMaster {
 
     /**
      * 修改文件后缀名
+     * @param sourcePath   源文件完整路径
+     * @param newSuffix    新的后缀名称
      */
-    public static String convertFileSuffix(String sourcePath, String suffix){
+    public static String convertFileSuffix(String sourcePath, String newSuffix){
         if(StringUtils.isEmpty(sourcePath)){
             return "";
         }
@@ -50,7 +53,7 @@ public class FileMaster {
         int len = ss.length;
         for(int i = 0; i < len; i ++){
             if(i == len - 1){
-                targetPath.append(suffix);
+                targetPath.append(newSuffix);
             }else{
                 targetPath.append(ss[i]);
             }
@@ -60,6 +63,7 @@ public class FileMaster {
 
     /**
      * 根据文件路径删除文件
+     * @param filePath     文件完整路径
      */
     public boolean delete(String filePath){
         if(StringUtils.isEmpty(filePath)){
