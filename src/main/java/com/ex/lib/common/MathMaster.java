@@ -45,8 +45,12 @@ public class MathMaster {
      * 将double数值四舍五入保留2位小数
      */
     public static double halfUp(double value){
-        BigDecimal bigDecimal = new BigDecimal(value);
-        bigDecimal = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
-        return bigDecimal.doubleValue();
+        try {
+            BigDecimal bigDecimal = new BigDecimal(value);
+            bigDecimal = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
+            return bigDecimal.doubleValue();
+        }catch (Exception e){
+            return 0.0;
+        }
     }
 }
