@@ -2,12 +2,11 @@ package com.ex.lib.common;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -164,6 +163,16 @@ public class TimeMaster {
 
     /**
      * 获取指定date对应的unix秒级时间戳
+     */
+    public static int getUnixSeconds(Date date){
+        Instant instant = date.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDateTime localDateTime = instant.atZone(zoneId).toLocalDateTime();
+        return getUnixSeconds(localDateTime);
+    }
+
+    /**
+     * 获取指定localDateTime对应的unix秒级时间戳
      */
     public static int getUnixSeconds(LocalDateTime dateTime){
         if(dateTime == null) {

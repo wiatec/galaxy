@@ -1,5 +1,6 @@
 package com.ex.lib;
 
+import com.ex.lib.common.FileMaster;
 import com.ex.lib.common.TimeMaster;
 
 import java.time.LocalDateTime;
@@ -65,25 +66,32 @@ public class Main {
 //        System.out.println(UnitMaster.formatStorage(1234324234));
 
         // time
-        System.out.println(TimeMaster.getString());
-        System.out.println(TimeMaster.getString(1572349281));
-        System.out.println(TimeMaster.getString(DateTimeFormatter.ofPattern(TimeMaster.PATTERN_DATE)));
-        System.out.println(TimeMaster.getString(LocalDateTime.now().plus(1, ChronoUnit.DAYS),
-                DateTimeFormatter.ofPattern(TimeMaster.PATTERN_DATE_TIME)));
-        System.out.println(TimeMaster.isBefore(1572349281L));
-        System.out.println(TimeMaster.isBefore(LocalDateTime.now().plus(1, ChronoUnit.DAYS)));
-        System.out.println(TimeMaster.getUnixSeconds());
-        System.out.println(TimeMaster.getUnixSeconds("2020-05-06 01:03:45"));
-        System.out.println(TimeMaster.getUnixSeconds(LocalDateTime.now()));
-        System.out.println(TimeMaster.getUnixMilliSeconds("2020-05-09 01:03:45"));
-        System.out.println(TimeMaster.getUnixMilliSeconds(LocalDateTime.now()));
-        System.out.println(TimeMaster.getUnixSecondsStartOfDay());
-        System.out.println(TimeMaster.getUnixSecondsEndOfDay());
-        System.out.println(TimeMaster.getDateTime("2020-05-09 01:03:45"));
-        System.out.println(TimeMaster.getDateAfterSomeYears(3));
-        System.out.println(TimeMaster.getDifferentDays(LocalDateTime.now(), LocalDateTime.now()
-                .plus(1, ChronoUnit.YEARS)));
-        System.out.println(TimeMaster.isSameDay(LocalDateTime.now(), LocalDateTime.now()
-                .plus(1, ChronoUnit.HOURS)));
+//        System.out.println(TimeMaster.getString());
+//        System.out.println(TimeMaster.getString(1572349281));
+//        System.out.println(TimeMaster.getString(DateTimeFormatter.ofPattern(TimeMaster.PATTERN_DATE)));
+//        System.out.println(TimeMaster.getString(LocalDateTime.now().plus(1, ChronoUnit.DAYS),
+//                DateTimeFormatter.ofPattern(TimeMaster.PATTERN_DATE_TIME)));
+//        System.out.println(TimeMaster.isBefore(1572349281L));
+//        System.out.println(TimeMaster.isBefore(LocalDateTime.now().plus(1, ChronoUnit.DAYS)));
+//        System.out.println(TimeMaster.getUnixSeconds());
+//        System.out.println(TimeMaster.getUnixSeconds("2020-05-06 01:03:45"));
+//        System.out.println(TimeMaster.getUnixSeconds(LocalDateTime.now()));
+//        System.out.println(TimeMaster.getUnixMilliSeconds("2020-05-09 01:03:45"));
+//        System.out.println(TimeMaster.getUnixMilliSeconds(LocalDateTime.now()));
+//        System.out.println(TimeMaster.getUnixSecondsStartOfDay());
+//        System.out.println(TimeMaster.getUnixSecondsEndOfDay());
+//        System.out.println(TimeMaster.getDateTime("2020-05-09 01:03:45"));
+//        System.out.println(TimeMaster.getDateAfterSomeYears(3));
+//        System.out.println(TimeMaster.getDifferentDays(LocalDateTime.now(), LocalDateTime.now()
+//                .plus(1, ChronoUnit.YEARS)));
+//        System.out.println(TimeMaster.isSameDay(LocalDateTime.now(), LocalDateTime.now()
+//                .plus(1, ChronoUnit.HOURS)));
+
+        //file
+        System.out.println(FileMaster.getFileName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
+        System.out.println(FileMaster.getNoSuffixFileName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
+        System.out.println(FileMaster.getSuffixName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
+        System.out.println(FileMaster.convertFileSuffix("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java", "png"));
+        System.out.println(FileMaster.cleanDirectory("/Users/patrick/Downloads/upload"));
     }
 }
