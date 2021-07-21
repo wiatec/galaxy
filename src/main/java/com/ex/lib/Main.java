@@ -3,6 +3,8 @@ package com.ex.lib;
 import com.ex.lib.common.FileMaster;
 import com.ex.lib.common.GzipMaster;
 import com.ex.lib.common.TimeMaster;
+import com.ex.lib.enu.EnumMonth;
+import com.ex.lib.enu.EnumWeek;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -96,8 +98,9 @@ public class Main {
 //        System.out.println(FileMaster.cleanDirectory("/Users/patrick/Downloads/upload"));
 
         // gzip
-        String compressedSource = GzipMaster.compress("FSAFEWFWE312312312312313123213FWFSFSDF");
-        System.out.println(compressedSource);
-        System.out.println(GzipMaster.decompress(compressedSource));
+//        String compressedSource = GzipMaster.compress("FSAFEWFWE312312312312313123213FWFSFSDF");
+//        System.out.println(compressedSource);
+//        System.out.println(GzipMaster.decompress(compressedSource));
+
     }
 }

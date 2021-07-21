@@ -1,5 +1,6 @@
 package com.ex.lib.enu;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,10 @@ public enum EnumMonth {
     private String zhName;
 
     EnumMonth(int month, String enName, String enFullName, String zhName) {
+        this.month = month;
+        this.enName = enName;
+        this.enFullName = enFullName;
+        this.zhName = zhName;
     }
 
     public int getMonth() {
@@ -63,6 +68,16 @@ public enum EnumMonth {
 
     public void setZhName(String zhName) {
         this.zhName = zhName;
+    }
+
+    @Override
+    public String toString() {
+        return "EnumMonth{" +
+                "month=" + month +
+                ", enName='" + enName + '\'' +
+                ", enFullName='" + enFullName + '\'' +
+                ", zhName='" + zhName + '\'' +
+                '}';
     }
 
     public static List<String> getEnFullNames(){

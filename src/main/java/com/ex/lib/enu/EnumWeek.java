@@ -26,6 +26,10 @@ public enum EnumWeek {
     private String zhName;
 
     EnumWeek(int day, String enName, String enFullName, String zhName) {
+        this.day = day;
+        this.enName = enName;
+        this.enFullName = enFullName;
+        this.zhName = zhName;
     }
 
     public int getDay() {
