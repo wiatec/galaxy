@@ -12,6 +12,9 @@ import java.util.zip.GZIPOutputStream;
  */
 public class GzipMaster {
 
+    /**
+     * 压缩字符串
+     */
     public static String compress(String source) {
         if (source == null || source.length() == 0) {
             return source;
@@ -24,7 +27,7 @@ public class GzipMaster {
         } catch (IOException e) {
             e.printStackTrace();
         }finally{
-            if(gzip!=null){
+            if(gzip != null){
                 try {
                     gzip.close();
                 } catch (IOException e) {
@@ -35,8 +38,11 @@ public class GzipMaster {
         return new sun.misc.BASE64Encoder().encode(out.toByteArray());
     }
 
-    public static String decompress(String compressedStr){
-        if(compressedStr==null){
+    /**
+     * 解压缩字符串pressedStr
+     */
+    public static String decompress(String compressedSource){
+        if(compressedSource==null){
             return null;
         }
         ByteArrayOutputStream out = null;
@@ -45,7 +51,7 @@ public class GzipMaster {
         byte[] compressed;
         String decompressed = null;
         try {
-            compressed = new sun.misc.BASE64Decoder().decodeBuffer(compressedStr);
+            compressed = new sun.misc.BASE64Decoder().decodeBuffer(compressedSource);
             in = new ByteArrayInputStream(compressed);
             ginzip = new GZIPInputStream(in);
 

@@ -1,6 +1,7 @@
 package com.ex.lib;
 
 import com.ex.lib.common.FileMaster;
+import com.ex.lib.common.GzipMaster;
 import com.ex.lib.common.TimeMaster;
 
 import java.time.LocalDateTime;
@@ -88,10 +89,15 @@ public class Main {
 //                .plus(1, ChronoUnit.HOURS)));
 
         //file
-        System.out.println(FileMaster.getFileName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
-        System.out.println(FileMaster.getNoSuffixFileName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
-        System.out.println(FileMaster.getSuffixName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
-        System.out.println(FileMaster.convertFileSuffix("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java", "png"));
-        System.out.println(FileMaster.cleanDirectory("/Users/patrick/Downloads/upload"));
+//        System.out.println(FileMaster.getFileName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
+//        System.out.println(FileMaster.getNoSuffixFileName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
+//        System.out.println(FileMaster.getSuffixName("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java"));
+//        System.out.println(FileMaster.convertFileSuffix("/Users/patrick/IdeaProjects/galaxy/src/main/java/com/ex/lib/common/FileMaster.java", "png"));
+//        System.out.println(FileMaster.cleanDirectory("/Users/patrick/Downloads/upload"));
+
+        // gzip
+        String compressedSource = GzipMaster.compress("FSAFEWFWE312312312312313123213FWFSFSDF");
+        System.out.println(compressedSource);
+        System.out.println(GzipMaster.decompress(compressedSource));
     }
 }

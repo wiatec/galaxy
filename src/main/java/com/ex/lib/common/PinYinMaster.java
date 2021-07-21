@@ -15,39 +15,35 @@ public class PinYinMaster {
 
     /**
      * 获取汉字拼音首字母
-     * @param hanzi
-     * @return
+     * @param source 汉字
      */
-    public static String convert2Pinyin(String hanzi){
-        return convert2Pinyin(hanzi, false);
+    public static String convert2Pinyin(String source){
+        return convert2Pinyin(source, false);
     }
 
 
     /**
      * 将汉字转为拼音
-     * @param hanzi
+     * @param source 汉字
      * @param isFull true 取全部拼音， false 取拼音首字母
-     * @return
      */
-    public static String convert2Pinyin(String hanzi, boolean isFull){
-        /***
-         * ^[\u2E80-\u9FFF]+$ 匹配所有东亚区的语言
-         * ^[\u4E00-\u9FFF]+$ 匹配简体和繁体
-         * ^[\u4E00-\u9FA5]+$ 匹配简体
-         */
+    public static String convert2Pinyin(String source, boolean isFull){
+         // ^[\u2E80-\u9FFF]+$ 匹配所有东亚区的语言
+         // ^[\u4E00-\u9FFF]+$ 匹配简体和繁体
+         // ^[\u4E00-\u9FA5]+$ 匹配简体
         String regExp="^[\u4E00-\u9FFF]+$";
-        StringBuffer sb = new StringBuffer();
-        if(hanzi == null|| "" .equals(hanzi.trim())){
+        StringBuilder sb = new StringBuilder();
+        if(source == null|| "" .equals(source.trim())){
             return "";
         }
-        String pinyin="";
-        for(int i=0;i<hanzi.length();i++){
-            char unit=hanzi.charAt(i);
+        String pinyin;
+        for(int i = 0; i < source.length(); i ++){
+            char unit = source.charAt(i);
             //是汉字，则转拼音
             Pattern pattern=Pattern.compile(regExp);
             Matcher matcher=pattern.matcher(String.valueOf(unit));
             if(matcher.find()){
-                pinyin = convertSingleHanzi2Pinyin(unit);
+                pinyin = convertSingle2Pinyin(unit);
                 if(isFull){
                     sb.append(pinyin);
                 }
@@ -63,16 +59,15 @@ public class PinYinMaster {
 
     /**
      * 将单个汉字转为拼音
-     * @param hanzi
-     * @return
+     * @param source 单个汉字
      */
-    private static String convertSingleHanzi2Pinyin(char hanzi){
+    private static String convertSingle2Pinyin(char source){
         HanyuPinyinOutputFormat outputFormat = new HanyuPinyinOutputFormat();
         outputFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
         String[] res;
-        StringBuffer sb=new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         try {
-            res = PinyinHelper.toHanyuPinyinStringArray(hanzi,outputFormat);
+            res = PinyinHelper.toHanyuPinyinStringArray(source, outputFormat);
             //对于多音字，只用第一个拼音
             sb.append(res[0]);
         } catch (Exception e) {
