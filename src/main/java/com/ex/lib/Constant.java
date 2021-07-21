@@ -20,6 +20,9 @@ public final class Constant {
         public static final int TEN = 10;
         public static final int TWENTY = 20;
 
+        public static final int SECONDS_PER_HOUR = 3600;
+        public static final int SECONDS_PER_DAY = 86400;
+
     }
 
     public static final class Key {
